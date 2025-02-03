@@ -1,47 +1,53 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div id="app">
+    <Header />
+    <main>
+      <HeroSection />
+      <FeaturesSection />
+      <CtaSection />
+      <ContactForm />
+    </main>
+    <Footer />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+import Header from './components/Header.vue'
+import HeroSection from './components/HeroSection.vue'
+import FeaturesSection from './components/FeaturesSection.vue'
+import CtaSection from './components/CtaSection.vue'
+import ContactForm from './components/ContactForm.vue'
+import Footer from './components/Footer.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+    HeroSection,
+    FeaturesSection,
+    CtaSection,
+    ContactForm,
+    Footer
+  }
+}
+</script>
+
+<style>
+/* Estilos específicos para App.vue */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+/* Animações */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 </style>
